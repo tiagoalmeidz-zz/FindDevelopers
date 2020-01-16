@@ -1,5 +1,6 @@
 const axios = require("axios");
 const Dev = require("../models/Dev");
+const parseStringAsArray = require("../utils/parseStringAsArray");
 
 module.exports = {
   async list(req, res) {
@@ -22,8 +23,7 @@ module.exports = {
 
       const { name = login, avatar_url, bio } = apiResponse.data;
 
-      const techsArray = techs.split(",").map(tech => tech.trim());
-      // Separando os elementos do array a cada virgula e retirando os espaços pra cada item.
+      const techsArray = parseStringAsArray(techs);
 
       const location = {
         type: "Point",
