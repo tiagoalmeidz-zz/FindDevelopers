@@ -39,7 +39,12 @@ function App() {
           <button type="submit">Salvar</button>
         </form>
       </aside>
-      <main></main>
+
+      <main>
+        <ul>
+          <li className="dev-item"></li>
+        </ul>
+      </main>
     </div>
   );
 }
