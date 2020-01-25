@@ -29,6 +29,11 @@ function App() {
     );
   }, []);
 
+  function handleClear() {
+    setGithubUsername("");
+    setTechs("");
+  }
+
   async function handleAddDev(event) {
     event.preventDefault();
 
@@ -40,6 +45,7 @@ function App() {
     });
 
     console.log(response.data);
+    handleClear();
   }
 
   return (
