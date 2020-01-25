@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../src/global.scss";
+import baseURL from "../../services/api";
 import "./App.scss";
 import "./Main.scss";
 import "./Sidebar.scss";
@@ -30,6 +31,15 @@ function App() {
 
   async function handleAddDev(event) {
     event.preventDefault();
+
+    const response = await baseURL.post("/devs", {
+      github_username: githubUsername,
+      techs,
+      latitude,
+      longitude
+    });
+
+    console.log(response.data);
   }
 
   return (
@@ -57,11 +67,6 @@ function App() {
               onChange={e => setTechs(e.target.value)}
               required
             />
-          </div>
-
-          <div className="input-block">
-            <label htmlFor="username_github">Usuário do GitHub</label>
-            <input name="github_username" id="username_github" required />
           </div>
 
           <div className="input-group">
